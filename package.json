@@ -1,0 +1,34 @@
+{
+  "name": "project-x-ultimate",
+  "version": "1.0.0",
+  "description": "Project X Ultimate — Classified Command Center",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "postinstall": "electron-rebuild -f -w better-sqlite3"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "^1.7.2",
+    "better-sqlite3": "^9.4.3",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.0",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "electron": "^28.2.0",
+    "electron-rebuild": "^3.2.9",
+    "electron-vite": "^2.0.0",
+    "postcss": "^8.4.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.12"
+  }
+}

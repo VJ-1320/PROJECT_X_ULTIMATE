@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@tailwind base;@tailwind components;@tailwind utilities;/* ── Fonts ───────────────────────────────────────────────────── *//* ── Root tokens ─────────────────────────────────────────────── */:root {
+  --bg:    #03030a;  --bg1:   #07071a;  --bg2:   #0b0b22;
+  --bg3:   #10102e;  --bg4:   #16163a;
+  --c:     #00ffb3;  --cg:    rgba(0,255,179,.06); --cb: rgba(0,255,179,.18);
+  --cglow: rgba(0,255,179,.22);
+  --a:     #f5a623;  --ab:    rgba(245,166,35,.30);
+  --b:     #5577ff;  --r:     #ff4466;  --g:     #33ff88;
+  --txt:   #b0c0cc;  --txt2:  #506070;  --txt3:  #283040;
+  --t: .18s;
+  --ease: cubic-bezier(.4,0,.2,1);
+}/* ── Reset ───────────────────────────────────────────────────── */*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }html, body, #root { height: 100%; overflow: hidden; }body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  -webkit-font-smoothing: antialiased;
+}/* scrollbar */::-webkit-scrollbar { width: 3px; height: 3px; }::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 10px; }::-webkit-scrollbar-track { background: transparent; }/* ── Grid texture ────────────────────────────────────────────── */body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(var(--cg) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cg) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: .3;
+}/* ── Scanlines overlay ───────────────────────────────────────── */body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px
+  );
+}/* ── Glow pulse animation ────────────────────────────────────── */@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px var(--cglow); }
+  50%       { box-shadow: 0 0 20px var(--cglow), 0 0 40px rgba(0,255,179,.1); }
+}@keyframes blinkDot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .1; }
+}@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}/* ── Leaflet dark overrides ──────────────────────────────────── */.leaflet-control-zoom {
+  border: 1px solid var(--cb) !important;
+  background: rgba(3,3,10,.9) !important;
+}.leaflet-control-zoom a {
+  background: rgba(3,3,10,.9) !important;
+  color: var(--c) !important;
+  border-color: var(--cb) !important;
+}.leaflet-control-zoom a:hover {
+  background: var(--c) !important;
+  color: var(--bg) !important;
+}.leaflet-popup-content-wrapper {
+  background: rgba(7,7,26,.96) !important;
+  border: 1px solid var(--cb) !important;
+  color: var(--txt) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 20px rgba(0,255,179,.1) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: .72rem !important;
+}.leaflet-popup-tip { background: var(--bg2) !important; }.leaflet-popup-close-button { color: var(--txt3) !important; }.leaflet-attribution-flag { display: none !important; }/* ── Utility classes ─────────────────────────────────────────── */.font-display { font-family: 'Orbitron', sans-serif; }.font-mono    { font-family: 'Share Tech Mono', monospace; }.btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 6px 16px;
+  transition: all var(--t);
+  border: 1px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}.btn-c {
+  border-color: var(--cb);
+  color: var(--c);
+  background: rgba(0,255,179,.07);
+}.btn-c:hover {
+  background: var(--c);
+  color: var(--bg);
+  box-shadow: 0 0 14px var(--cglow);
+}.btn-a {
+  border-color: var(--ab);
+  color: var(--a);
+  background: rgba(245,166,35,.08);
+}.btn-a:hover { background: var(--a); color: var(--bg); }.btn-ghost {
+  border-color: var(--bg4);
+  color: var(--txt2);
+  background: none;
+}.btn-ghost:hover { border-color: var(--cb); color: var(--c); }.btn-r {
+  border-color: rgba(255,68,102,.3);
+  color: var(--r);
+  background: rgba(255,68,102,.07);
+}.btn-r:hover { background: var(--r); color: #fff; }.inp {
+  background: var(--bg3);
+  border: 1px solid var(--bg4);
+  border-radius: 6px;
+  color: var(--txt);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .8rem;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+  width: 100%;
+}.inp:focus {
+  border-color: var(--cb);
+  box-shadow: 0 0 0 2px rgba(0,255,179,.07);
+}.inp::placeholder { color: var(--txt3); }/* canvas tool cursor */.cursor-crosshair { cursor: crosshair; }.cursor-pen       { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='3' fill='%2300ffb3'/%3E%3C/svg%3E") 10 10, crosshair; }
